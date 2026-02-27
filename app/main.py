@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.requests import HTTPConnection
+from fastapi.responses import HTMLResponse
 
 from app.logger import logger
 from app.models import Numbers
@@ -12,11 +13,12 @@ web_app = FastAPI()
 user = User(name="Said Makhov", id=1)
 feedbacks = []
 
-@web_app.get("/")
+@web_app.get("/", response_class=HTMLResponse)
 def read_root():
-    logger.info("hello")
-    print("read root code: {}")
-    return {"message": "Авторелоад действительно работает"}
+    with open("index.html", encoding="utf-8") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content)
+
 
 @web_app.get("/users")
 def get_user():
