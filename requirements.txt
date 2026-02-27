@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+requests
+environs
+dataclasses
+black
+flake8
+isort
+pre-commit
