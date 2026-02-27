@@ -15,10 +15,9 @@ feedbacks = []
 
 @web_app.get("/", response_class=HTMLResponse)
 def read_root():
-    with open("index.html", encoding="utf-8") as f:
+    with open("./app/index.html", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
-
 
 @web_app.get("/users")
 def get_user():
